@@ -4,13 +4,13 @@
 // Run:     java-algs4 TestNumberOfOpenSites
 
 public class TestNumberOfOpenSites {
-
+/*
     static void check(String label, boolean condition) {
         System.out.println((condition ? "PASS" : "FAIL") + ": " + label);
     }
 
     public static void main(String[] args) {
-        /*
+
         System.out.println("--- initial count ---");
         Percolation fresh = new Percolation(5);
         check("fresh grid has zero open sites", fresh.numberOfOpenSites() == 0);
@@ -40,6 +40,8 @@ public class TestNumberOfOpenSites {
         one.open(1, 1);
         check("opening the only 1x1 site gives count 1", one.numberOfOpenSites() == 1);
 
-         */
+
     }
+    */
+
 }

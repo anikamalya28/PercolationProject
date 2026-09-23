@@ -8,6 +8,7 @@ public class Percolation {
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) throws IllegalArgumentException {
         if (n<=0) {throw new IllegalArgumentException("error");}
+        this.n = n;
 
         grid = new boolean[n*n+2];
         //false is blocked
@@ -17,19 +18,30 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) throws IllegalArgumentException {
-        if (row<=0 || col<=0 || row > n || col > n) {throw new IllegalArgumentException("error");}
+        //if (n*(row-1)+col <= 0 || n*(row-1)+col >= n*n+1) {throw new IllegalArgumentException("error");}
+        if (col <= 0 || row <= 0 || col > n || row > n) {throw new IllegalArgumentException("error");}
         grid[n*(row-1)+col] = true;
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) throws IllegalArgumentException {
-        if (row<=0 || col<=0 || row > n || col > n) {throw new IllegalArgumentException("error");}
+        if (col <= 0 || row <= 0 || col > n || row > n) {throw new IllegalArgumentException("error");}
         return grid[n*(row-1)+col];
     }
-/*
-    // is the site (row, col) full?
-    public boolean isFull(int row, int col)
 
+    // is the site (row, col) full?
+    public boolean isFull(int row, int col) {
+        if (0 < col-1 <= n) {
+            if (isOpen(row, col-1)) {return true;}
+        };
+        if (0 < col+1 <= n) {
+            if (isOpen(row, col+1)) {return true;}
+        };
+        if (0 < row-1 <= n) {
+            if (isOpen(row, col-1)) {return true;}
+        };
+    }
+/*
     // returns the number of open sites
     public int numberOfOpenSites()
 
