@@ -4,7 +4,7 @@
 // Run:     java-algs4 TestNumberOfOpenSites
 
 public class TestNumberOfOpenSites {
-/*
+
     static void check(String label, boolean condition) {
         System.out.println((condition ? "PASS" : "FAIL") + ": " + label);
     }
@@ -42,6 +42,6 @@ public class TestNumberOfOpenSites {
 
 
     }
-    */
+
 
 }

@@ -10,7 +10,7 @@ public class TestIsFull {
     }
 
     public static void main(String[] args) {
-        /*
+
         System.out.println("--- fresh grid and top-row behavior ---");
         Percolation fresh = new Percolation(5);
         check("isFull(1,1) is false on a fresh grid", !fresh.isFull(1, 1));
@@ -29,6 +29,7 @@ public class TestIsFull {
         connected.open(2, 1);
         check("(2,1) is full through (1,1)", connected.isFull(2, 1));
 
+/*
         System.out.println("--- backwash prevention ---");
         Percolation backwash = new Percolation(3);
         backwash.open(1, 2);
@@ -37,7 +38,7 @@ public class TestIsFull {
         check("column 2 creates percolation", backwash.percolates());
         backwash.open(3, 1);
         check("bottom site outside the path is not full", !backwash.isFull(3, 1));
-
+*/
         System.out.println("--- out-of-bounds arguments ---");
         boolean rowZeroThrows = false;
         try {
@@ -55,6 +56,6 @@ public class TestIsFull {
         }
         check("isFull(6,1) on 5x5 throws IllegalArgumentException", rowSixThrows);
 
-         */
+
     }
 }
