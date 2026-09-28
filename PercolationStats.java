@@ -2,9 +2,40 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
+    private int n;
+    private int trials;
 
 
-    public static void main(String[] args) {
+    // perform independent trials on an n-by-n grid
+    public PercolationStats(int n, int trials) throws IllegalArgumentException {
+        if (n<=0) {throw new IllegalArgumentException("error");}
+        if (trials<=0) {throw new IllegalArgumentException("error");}
+        this.n = n;
+        this.trials = trials;
+
+        for (int i = 0; i < trials; i++) {
+            Percolation x = new Percolation(n);
+            while (!x.percolates()) {
+                ;
+            }
+        }
+    }
+/*
+    // sample mean of percolation threshold
+    public double mean() {
 
     }
+
+    // sample standard deviation of percolation threshold
+    public double stddev()
+
+    // low endpoint of 95% confidence interval
+    public double confidenceLo()
+
+    // high endpoint of 95% confidence interval
+    public double confidenceHi()
+
+    // test client (see below)
+    public static void main(String[] args)
+*/
 }
