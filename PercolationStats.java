@@ -6,6 +6,7 @@ import static edu.princeton.cs.algs4.StdRandom.uniformInt;
 public class PercolationStats {
     private int n;
     private int trials;
+    private double[] thresholds;
 
 
     // perform independent trials on an n-by-n grid
@@ -14,34 +15,44 @@ public class PercolationStats {
         if (trials<=0) {throw new IllegalArgumentException("error");}
         this.n = n;
         this.trials = trials;
+        this.thresholds = new double[trials];
 
         for (int i = 0; i < trials; i++) {
             Percolation x = new Percolation(n);
             int tries = 0;
             while (!x.percolates()) {
-                int k = uniformInt(1, n*n+1);
-                if (!x.isOpen(((k-k%n)/k)+1,k%n)) {
-                    x.open(((k-k%n)/k)+1,k%n);
+                int row = uniformInt(1, n+1);
+                int col = uniformInt(1, n+1);
+                if (!x.isOpen(row, col)) {
+                    x.open(row, col);
                     tries += 1;
                 }
             }
+            thresholds[i] = (double)tries/(n*n);
         }
     }
-/*
+
     // sample mean of percolation threshold
     public double mean() {
-
+        return StdStats.mean(thresholds);
     }
 
     // sample standard deviation of percolation threshold
-    public double stddev()
+    public double stddev() {
+        return StdStats.stddev(thresholds);
+    }
 
     // low endpoint of 95% confidence interval
-    public double confidenceLo()
+    public double confidenceLo() {
+        return mean() - (1.96 * stddev() / Math.sqrt(trials));
+    }
 
     // high endpoint of 95% confidence interval
-    public double confidenceHi()
+    public double confidenceHi() {
+        return mean() + (1.96 * stddev() / Math.sqrt(trials));
+    }
 
+    /* 
     // test client (see below)
     public static void main(String[] args)
 */
