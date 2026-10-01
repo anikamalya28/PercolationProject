@@ -1,8 +1,6 @@
 import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
-import static edu.princeton.cs.algs4.StdRandom.uniformInt;
-
 public class PercolationStats {
     private int n;
     private int trials;
@@ -21,8 +19,8 @@ public class PercolationStats {
             Percolation x = new Percolation(n);
             int tries = 0;
             while (!x.percolates()) {
-                int row = uniformInt(1, n+1);
-                int col = uniformInt(1, n+1);
+                int row = StdRandom.uniformInt(1, n+1);
+                int col = StdRandom.uniformInt(1, n+1);
                 if (!x.isOpen(row, col)) {
                     x.open(row, col);
                     tries += 1;
@@ -44,12 +42,12 @@ public class PercolationStats {
 
     // low endpoint of 95% confidence interval
     public double confidenceLo() {
-        return mean() - (1.96 * stddev() / Math.sqrt(trials));
+        return (mean()-(1.96*stddev()/Math.sqrt(trials)));
     }
 
     // high endpoint of 95% confidence interval
     public double confidenceHi() {
-        return mean() + (1.96 * stddev() / Math.sqrt(trials));
+        return (mean()+(1.96*stddev()/Math.sqrt(trials)));
     }
 
     /* 
